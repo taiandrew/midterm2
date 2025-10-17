@@ -285,7 +285,7 @@ int main() {
     names.close();
 
     const int nNames = nameList.size();
-    printVector(nameList); // For debugging
+    // printVector(nameList); // For debugging
 
     // Initialize coffeeLine with 5 random names
     cout << "Store opens:" << endl;
@@ -293,7 +293,7 @@ int main() {
     for (int i = 0; i < 5; i++) {
         int r = rand() % nNames;
         coffeeLine.push_back(nameList[r]);
-        cout << nameList[r] << " joins the line" << endl;
+        cout << "   " << nameList[r] << " joins the line" << endl;
     }
     cout << "Resulting line: " << endl;
     coffeeLine.print();
@@ -338,7 +338,7 @@ int main() {
                 int pos = rand() % coffeeLineSize + 1; // 1 to size
                 cout << "   ";
                 coffeeLine.printAtPos(pos);
-                cout << "left the line" << endl;
+                cout << " left the line" << endl;
                 coffeeLine.delete_pos(pos);
             }
         }
