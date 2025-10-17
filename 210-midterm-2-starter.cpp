@@ -47,6 +47,21 @@ public:
         cout << tail->data;
     }
 
+    void printAtPos(int pos) {
+        // Prints value at pos; 1-indexed like delete_pos()
+        if (!head) {
+            cout << "List is empty." << endl;
+            return;
+        }
+        Node* temp = head;
+        for (int i = 1; i < pos; i++) {
+            temp = temp->next;
+        }
+        if (temp) {
+            cout << temp->data << endl;
+        }
+    }
+
     // Sizer
     int getSize() {
         Node* temp = head;
@@ -303,7 +318,15 @@ int main() {
             coffeeLine.pop_back();
         }
 
-        // 4. Random middle customer leaves
+        // 4. Random customer leaves
+        if (prob <= 10) {
+            int size = coffeeLine.getSize();
+            if (size > 0) {
+                int pos = rand() % size + 1; // 1 to size
+                cout << "Customer at position " << pos << " left the line" << endl;
+                coffeeLine.delete_pos(pos);
+            }
+        }
 
     }
 
