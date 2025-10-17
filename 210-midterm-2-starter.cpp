@@ -17,6 +17,7 @@ const string FILENAME = "/Users/andrewtai/Desktop/COMSC_210/midterm2/names.txt";
 // --------
 void printVector(const vector<string>& v);
 int sampleProb();
+void addToCoffeeLine();
 
 // --------
 // DLL class
@@ -258,6 +259,13 @@ public:
     }
 };
 
+
+// --------
+// Static vars
+// --------
+static DoublyLinkedList coffeeLine;
+static vector<string> nameList;
+
 // --------
 // Main
 // --------
@@ -278,7 +286,6 @@ int main() {
         cout << "Error opening file." << endl;
         return 1;
     }
-    vector<string> nameList;
     string name;
     while (names >> name)  // Read names into vector
         nameList.push_back(name);
@@ -289,11 +296,8 @@ int main() {
 
     // Initialize coffeeLine with 5 random names
     cout << "Store opens:" << endl;
-    DoublyLinkedList coffeeLine;
     for (int i = 0; i < 5; i++) {
-        int r = rand() % nNames;
-        coffeeLine.push_back(nameList[r]);
-        cout << "   " << nameList[r] << " joins the line" << endl;
+        addToCoffeeLine();
     }
     cout << "Resulting line: " << endl;
     coffeeLine.print();
@@ -316,12 +320,10 @@ int main() {
         // 2. New customer joins end
         prob = sampleProb();
         if (prob <= 60) {
-            int r = rand() % nNames;
-            cout << "   " << nameList[r] << " joined the line" << endl;
-            coffeeLine.push_back(nameList[r]);
+            addToCoffeeLine();
         }
 
-        // 3. Back customer leaves
+        // 3. Back customer leaves (note: allows newly arrived customers to leave)
         prob = sampleProb();
         if (prob <= 20 && coffeeLine.getSize() > 0) {
             cout << "   ";
@@ -330,7 +332,7 @@ int main() {
             coffeeLine.pop_back();
         }
 
-        // 4. Random customer leaves
+        // 4. Random customer leaves (note: allows newly arrived customers to leave)
         prob = sampleProb();
         if (prob <= 10 && coffeeLine.getSize() > 0) {
             int coffeeLineSize = coffeeLine.getSize();
@@ -373,4 +375,12 @@ void printVector(const vector<string>& v) {
 int sampleProb() {
     // Returns random int from 1 to 100
     return rand() % 100 + 1;
+}
+
+void addToCoffeeLine() {
+    // Adds a random name from nameList to coffeeLine
+    int nNames = nameList.size();
+    int r = rand() % nNames;
+    coffeeLine.push_back(nameList[r]);
+    cout << "   " << nameList[r] << " joins the line" << endl;
 }
