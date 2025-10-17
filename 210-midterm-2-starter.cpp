@@ -16,6 +16,7 @@ const string FILENAME = "/Users/andrewtai/Desktop/COMSC_210/midterm2/names.txt";
 // Prototypes
 // --------
 void printVector(const vector<string>& v);
+void printLine(DoublyLinkedList& line, const vector<string>& names);
 
 // --------
 // DLL class
@@ -224,6 +225,7 @@ public:
 // Main
 // --------
 int main() {
+    // Coffee queue implemented as a doubly linked list
 
     // Set seed
     srand(time(0));
@@ -250,6 +252,7 @@ int main() {
         int r = rand() % nNames;
         coffeeLine.push_back(r);
     }
+    
 
 
     return 0;
@@ -263,4 +266,11 @@ void printVector(const vector<string>& v) {
     for (const string& i : v)
         cout << i << " ";
     cout << endl;
+}
+
+void printLine(DoublyLinkedList* line, const vector<string>& names) {
+    // Print the coffee line 
+    // maps number stored in linked list to names in vector
+
+    
 }
