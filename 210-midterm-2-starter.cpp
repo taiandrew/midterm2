@@ -259,15 +259,31 @@ int main() {
     }
     cout << "Resulting line: " << endl;
     coffeeLine.print();
-    cout << endl;
 
     // Simulate 20 rounds
     for (int t=0; t<20; t++) {
         cout << "Time step #" << t+1 << endl;
+
+        // Calculate probability
+        int prob = rand() % 100 + 1;
+
+        // 1. Front of line is served
+        if (prob <= 40) {
+            cout << coffeeLine.gethead()->data << " is served" << endl;
+            coffeeLine.pop_front();
+        }
+
+        // 2. New customer joins end
+        if (prob <= 60) {
+            int r = rand() % nNames;
+            cout << nameList[r] << " joined the line" << endl;
+            coffeeLine.push_back(nameList[r]);
+        }
     }
 
     return 0;
 }
+
 
 // --------
 // Programmer functions
