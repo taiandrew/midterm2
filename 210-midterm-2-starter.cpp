@@ -58,7 +58,7 @@ public:
             temp = temp->next;
         }
         if (temp) {
-            cout << temp->data << endl;
+            cout << temp->data;
         }
     }
 
@@ -230,7 +230,7 @@ public:
     void print() {
         Node* current = head;
         if (!current) {
-            cout << "List is empty." << endl;
+            cout << "List is empty.\n" << endl;
             return;
         }
         while (current) {
@@ -299,6 +299,7 @@ int main() {
         // 1. Front of line is served
         prob = rand() % 100 + 1;
         if (prob <= 40) {
+            cout << "   ";
             coffeeLine.printHead();
             cout << " is served" << endl;
             coffeeLine.pop_front();
@@ -308,13 +309,14 @@ int main() {
         prob = rand() % 100 + 1;
         if (prob <= 60) {
             int r = rand() % nNames;
-            cout << nameList[r] << " joined the line" << endl;
+            cout << "   " << nameList[r] << " joined the line" << endl;
             coffeeLine.push_back(nameList[r]);
         }
 
         // 3. Back customer leaves
         prob = rand() % 100 + 1;
         if (prob <= 20) {
+            cout << "   ";
             coffeeLine.printTail();
             cout << " (at the rear) left the line" << endl;
             coffeeLine.pop_back();
@@ -326,6 +328,7 @@ int main() {
             int coffeeLineSize = coffeeLine.getSize();
             if (coffeeLineSize > 0) {
                 int pos = rand() % coffeeLineSize + 1; // 1 to size
+                cout << "   ";
                 coffeeLine.printAtPos(pos);
                 cout << "left the line" << endl;
                 coffeeLine.delete_pos(pos);
@@ -336,7 +339,7 @@ int main() {
         prob = rand() % 100 + 1;
         if (prob <= 10) {
             int r = rand() % nNames;
-            cout << nameList[r] << " (VIP) joins the front of the line" << endl;
+            cout << "   " << nameList[r] << " (VIP) joins the front of the line" << endl;
             coffeeLine.push_front(nameList[r]);
         }
 
