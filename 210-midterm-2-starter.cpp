@@ -1,8 +1,20 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <fstream>
+#include <vector>
+
 using namespace std;
 
+// --------
+// Constants
+// --------
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const string FILENAME = "/Users/andrewtai/Desktop/COMSC_210/midterm2/names.txt";
 
+// --------
+// DLL class
+// --------
 class DoublyLinkedList {
 private:
     struct Node {
@@ -203,9 +215,27 @@ public:
     }
 };
 
+// --------
+// Main
+// --------
 int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
-    
+    // Set seed
+    srand(time(0));
+
+    // Open file of names; store in vector
+    ifstream names;
+    names.open("names.txt");
+    if (!names) {       // Check if file good
+        cout << "Error opening file." << endl;
+        return 1;
+    }
+    vector<string> nameList;
+    string name;
+    while (names >> name)  // Read names into vector
+        nameList.push_back(name);
+    names.close();
+
+
     return 0;
 }
