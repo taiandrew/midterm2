@@ -263,6 +263,7 @@ public:
 // --------
 // Static vars
 // --------
+// Static so functions can access them
 static DoublyLinkedList coffeeLine;
 static vector<string> nameList;
 
@@ -303,8 +304,8 @@ int main() {
     coffeeLine.print();
 
     // Simulate 20 rounds
-    for (int t=0; t<20; t++) {
-        cout << "Time step #" << t+1 << endl;
+    for (int t=1; t<=20; t++) {
+        cout << "Time step #" << t << endl;
 
         int prob;
 
