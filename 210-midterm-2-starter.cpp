@@ -16,6 +16,7 @@ const string FILENAME = "/Users/andrewtai/Desktop/COMSC_210/midterm2/names.txt";
 // Prototypes
 // --------
 void printVector(const vector<string>& v);
+int sampleProb();
 
 // --------
 // DLL class
@@ -297,8 +298,8 @@ int main() {
         int prob;
 
         // 1. Front of line is served
-        prob = rand() % 100 + 1;
-        if (prob <= 40) {
+        prob = sampleProb();
+        if (prob <= 40 && coffeeLine.getSize() > 0) {
             cout << "   ";
             coffeeLine.printHead();
             cout << " is served" << endl;
@@ -306,7 +307,7 @@ int main() {
         }
 
         // 2. New customer joins end
-        prob = rand() % 100 + 1;
+        prob = sampleProb();
         if (prob <= 60) {
             int r = rand() % nNames;
             cout << "   " << nameList[r] << " joined the line" << endl;
@@ -314,8 +315,8 @@ int main() {
         }
 
         // 3. Back customer leaves
-        prob = rand() % 100 + 1;
-        if (prob <= 20) {
+        prob = sampleProb();
+        if (prob <= 20 && coffeeLine.getSize() > 0) {
             cout << "   ";
             coffeeLine.printTail();
             cout << " (at the rear) left the line" << endl;
@@ -323,8 +324,8 @@ int main() {
         }
 
         // 4. Random customer leaves
-        prob = rand() % 100 + 1;
-        if (prob <= 10 and coffeeLine.getSize() > 0) {
+        prob = sampleProb();
+        if (prob <= 10 && coffeeLine.getSize() > 0) {
             int coffeeLineSize = coffeeLine.getSize();
             if (coffeeLineSize > 0) {
                 int pos = rand() % coffeeLineSize + 1; // 1 to size
@@ -336,7 +337,7 @@ int main() {
         }
 
         // 5. VIP arrives
-        prob = rand() % 100 + 1;
+        prob = sampleProb();
         if (prob <= 10) {
             int r = rand() % nNames;
             cout << "   " << nameList[r] << " (VIP) joins the front of the line" << endl;
@@ -361,4 +362,9 @@ void printVector(const vector<string>& v) {
     for (const string& i : v)
         cout << i << " ";
     cout << endl;
+}
+
+int sampleProb() {
+    // Returns random int from 1 to 100
+    return rand() % 100 + 1;
 }
