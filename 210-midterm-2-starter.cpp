@@ -23,10 +23,10 @@ void printVector(const vector<string>& v);
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        string data;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
+        Node(string val, Node* p = nullptr, Node* n = nullptr) {
             data = val; 
             prev = p;
             next = n;
@@ -39,10 +39,11 @@ private:
 public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
+    // Getters
     Node* getHead() { return head; }
     Node* getTail() { return tail; }
 
-    void insert_after(int value, int position) {
+    void insert_after(string value, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
@@ -73,7 +74,7 @@ public:
         temp->next = newNode;
     }
 
-    void delete_val(int value) {
+    void delete_val(string value) {
         if (!head) return;
 
         Node* temp = head;
@@ -133,7 +134,7 @@ public:
         delete temp;
     }
 
-    void push_back(int v) {
+    void push_back(string v) {
         Node* newNode = new Node(v);
         if (!tail)
             head = tail = newNode;
@@ -143,8 +144,8 @@ public:
             tail = newNode;
         }
     }
-    
-    void push_front(int v) {
+
+    void push_front(string v) {
         Node* newNode = new Node(v);
         if (!head)
             head = tail = newNode;
@@ -203,7 +204,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << current->data << " " << endl;
             current = current->next;
         }
         cout << endl;
@@ -249,13 +250,21 @@ int main() {
     printVector(nameList); // For debugging
 
     // Initialize coffeeLine with 5 random names
+    cout << "Store opens:" << endl;
     DoublyLinkedList coffeeLine;
     for (int i = 0; i < 5; i++) {
         int r = rand() % nNames;
-        coffeeLine.push_back(r);
+        coffeeLine.push_back(nameList[r]);
+        cout << nameList[r] << " joins the line" << endl;
     }
-    
+    cout << "Resulting line: " << endl;
+    coffeeLine.print();
+    cout << endl;
 
+    // Simulate 20 rounds
+    for (int t=0; t<20; t++) {
+        cout << "Time step #" << t+1 << endl;
+    }
 
     return 0;
 }
@@ -268,11 +277,4 @@ void printVector(const vector<string>& v) {
     for (const string& i : v)
         cout << i << " ";
     cout << endl;
-}
-
-void printLine(DoublyLinkedList& line, const vector<string>& names) {
-    // Print the coffee line with names instead of indices
-
-
-    DoublyLinkedList::Node* current = line.head;
 }
