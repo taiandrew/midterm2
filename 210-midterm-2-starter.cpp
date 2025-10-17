@@ -1,3 +1,6 @@
+// COMSC 210 | Midterm 2 | Oct 16 2025
+// IDE: VS Code
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -261,9 +264,8 @@ public:
 
 
 // --------
-// Static vars
+// Static vars (so functions can access them)
 // --------
-// Static so functions can access them
 static DoublyLinkedList coffeeLine;
 static vector<string> nameList;
 
@@ -305,8 +307,8 @@ int main() {
 
     // Simulate 20 rounds
     for (int t=1; t<=20; t++) {
-        cout << "Time step #" << t << endl;
 
+        cout << "Time step #" << t << endl;
         int prob;
 
         // 1. Front of line is served
