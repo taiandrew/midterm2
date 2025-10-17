@@ -44,12 +44,14 @@ public:
     void printHead() {
         cout << head->data;
     }
+
     void printTail() {
         cout << tail->data;
     }
 
     void printAtPos(int pos) {
         // Prints value at pos; 1-indexed like delete_pos()
+        // Caution: not really bounds checking 
         if (!head) {
             cout << "List is empty." << endl;
             return;
@@ -63,8 +65,9 @@ public:
         }
     }
 
-    // Sizer
+
     int getSize() {
+        // Returns size of list
         Node* temp = head;
         int count = 0;
         while (temp) {
@@ -260,6 +263,10 @@ public:
 // --------
 int main() {
     // Coffee queue implemented as a doubly linked list
+    // Customers can join at back via push_back()
+    // VIPs can join at front via push_front()
+    // Customers served at front via pop_front()
+    // Customers can leave via delete_pos() or pop_back()
 
     // Set seed
     srand(time(0));
@@ -352,7 +359,6 @@ int main() {
 
     return 0;
 }
-
 
 // --------
 // Programmer functions
