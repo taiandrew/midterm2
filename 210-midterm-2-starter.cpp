@@ -284,7 +284,7 @@ int main() {
 
     // Open file of names; store in vector
     ifstream names;
-    names.open("names.txt");
+    names.open(FILENAME);
     if (!names) {       // Check if file good
         cout << "Error opening file." << endl;
         return 1;
