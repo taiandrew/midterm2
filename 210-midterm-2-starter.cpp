@@ -47,6 +47,17 @@ public:
         cout << tail->data;
     }
 
+    // Sizer
+    int getSize() {
+        Node* temp = head;
+        int count = 0;
+        while (temp) {
+            count++;
+            temp = temp->next;
+        }
+        return count;
+    }
+
     void insert_after(string value, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
@@ -284,6 +295,16 @@ int main() {
             cout << nameList[r] << " joined the line" << endl;
             coffeeLine.push_back(nameList[r]);
         }
+
+        // 3. Back customer leaves
+        if (prob <= 20) {
+            coffeeLine.printTail();
+            cout << " (at the rear) left the line" << endl;
+            coffeeLine.pop_back();
+        }
+
+        // 4. Random middle customer leaves
+
     }
 
     return 0;
