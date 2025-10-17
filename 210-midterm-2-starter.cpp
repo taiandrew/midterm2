@@ -16,7 +16,6 @@ const string FILENAME = "/Users/andrewtai/Desktop/COMSC_210/midterm2/names.txt";
 // Prototypes
 // --------
 void printVector(const vector<string>& v);
-void printLine(DoublyLinkedList& line, const vector<string>& names);
 
 // --------
 // DLL class
@@ -39,6 +38,9 @@ private:
 
 public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
+
+    Node* getHead() { return head; }
+    Node* getTail() { return tail; }
 
     void insert_after(int value, int position) {
         if (position < 0) {
@@ -268,9 +270,9 @@ void printVector(const vector<string>& v) {
     cout << endl;
 }
 
-void printLine(DoublyLinkedList* line, const vector<string>& names) {
-    // Print the coffee line 
-    // maps number stored in linked list to names in vector
+void printLine(DoublyLinkedList& line, const vector<string>& names) {
+    // Print the coffee line with names instead of indices
 
-    
+
+    DoublyLinkedList::Node* current = line.head;
 }
