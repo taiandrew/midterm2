@@ -13,6 +13,11 @@ const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
 const string FILENAME = "/Users/andrewtai/Desktop/COMSC_210/midterm2/names.txt";
 
 // --------
+// Prototypes
+// --------
+void printVector(const vector<string>& v);
+
+// --------
 // DLL class
 // --------
 class DoublyLinkedList {
@@ -236,6 +241,26 @@ int main() {
         nameList.push_back(name);
     names.close();
 
+    const int nNames = nameList.size();
+    printVector(nameList); // For debugging
+
+    // Initialize coffeeLine with 5 random names
+    DoublyLinkedList coffeeLine;
+    for (int i = 0; i < 5; i++) {
+        int r = rand() % nNames;
+        coffeeLine.push_back(r);
+    }
+
 
     return 0;
+}
+
+// --------
+// Programmer functions
+// --------
+void printVector(const vector<string>& v) {
+    // For debugging: print vector contents
+    for (const string& i : v)
+        cout << i << " ";
+    cout << endl;
 }
