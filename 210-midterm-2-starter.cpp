@@ -234,7 +234,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " " << endl;
+            cout << "   " << current->data << " " << endl;
             current = current->next;
         }
         cout << endl;
@@ -294,10 +294,10 @@ int main() {
     for (int t=0; t<20; t++) {
         cout << "Time step #" << t+1 << endl;
 
-        // Calculate probability
-        int prob = rand() % 100 + 1;
+        int prob;
 
         // 1. Front of line is served
+        prob = rand() % 100 + 1;
         if (prob <= 40) {
             coffeeLine.printHead();
             cout << " is served" << endl;
@@ -305,6 +305,7 @@ int main() {
         }
 
         // 2. New customer joins end
+        prob = rand() % 100 + 1;
         if (prob <= 60) {
             int r = rand() % nNames;
             cout << nameList[r] << " joined the line" << endl;
@@ -312,6 +313,7 @@ int main() {
         }
 
         // 3. Back customer leaves
+        prob = rand() % 100 + 1;
         if (prob <= 20) {
             coffeeLine.printTail();
             cout << " (at the rear) left the line" << endl;
@@ -319,7 +321,8 @@ int main() {
         }
 
         // 4. Random customer leaves
-        if (prob <= 10) {
+        prob = rand() % 100 + 1;
+        if (prob <= 10 and coffeeLine.getSize() > 0) {
             int coffeeLineSize = coffeeLine.getSize();
             if (coffeeLineSize > 0) {
                 int pos = rand() % coffeeLineSize + 1; // 1 to size
@@ -330,6 +333,7 @@ int main() {
         }
 
         // 5. VIP arrives
+        prob = rand() % 100 + 1;
         if (prob <= 10) {
             int r = rand() % nNames;
             cout << nameList[r] << " (VIP) joins the front of the line" << endl;
@@ -339,8 +343,6 @@ int main() {
         // Print line
         cout << "Resulting line: " << endl;
         coffeeLine.print();
-
-        cout << "/n" << endl;
 
     }
 
