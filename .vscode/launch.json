@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/andrewtai/Desktop/COMSC_210/midterm2",
+      "program": "/Users/andrewtai/Desktop/COMSC_210/midterm2/build/Debug/outDebug"
+    }
+  ]
+}
