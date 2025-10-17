@@ -39,9 +39,13 @@ private:
 public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    // Getters
-    Node* getHead() { return head; }
-    Node* getTail() { return tail; }
+    // Printers
+    void printHead() {
+        cout << head->data;
+    }
+    void printTail() {
+        cout << tail->data;
+    }
 
     void insert_after(string value, int position) {
         if (position < 0) {
@@ -269,7 +273,8 @@ int main() {
 
         // 1. Front of line is served
         if (prob <= 40) {
-            cout << coffeeLine.gethead()->data << " is served" << endl;
+            coffeeLine.printHead();
+            cout << " is served" << endl;
             coffeeLine.pop_front();
         }
 
