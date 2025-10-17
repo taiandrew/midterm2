@@ -320,13 +320,27 @@ int main() {
 
         // 4. Random customer leaves
         if (prob <= 10) {
-            int size = coffeeLine.getSize();
-            if (size > 0) {
-                int pos = rand() % size + 1; // 1 to size
-                cout << "Customer at position " << pos << " left the line" << endl;
+            int coffeeLineSize = coffeeLine.getSize();
+            if (coffeeLineSize > 0) {
+                int pos = rand() % coffeeLineSize + 1; // 1 to size
+                coffeeLine.printAtPos(pos);
+                cout << "left the line" << endl;
                 coffeeLine.delete_pos(pos);
             }
         }
+
+        // 5. VIP arrives
+        if (prob <= 10) {
+            int r = rand() % nNames;
+            cout << nameList[r] << " (VIP) joins the front of the line" << endl;
+            coffeeLine.push_front(nameList[r]);
+        }
+
+        // Print line
+        cout << "Resulting line: " << endl;
+        coffeeLine.print();
+
+        cout << "/n" << endl;
 
     }
 
